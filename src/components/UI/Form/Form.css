@@ -1,0 +1,11 @@
+.form__wrapper {
+  display: flex;
+  flex-direction: column;
+}
+.hide {
+  display: none;
+}
+
+.error {
+  border: 2px solid red;
+}
