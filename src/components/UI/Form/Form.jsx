@@ -2,11 +2,6 @@ import React, { Component } from 'react';
 import './Form.css';
 import { formInitialState } from '../../store/store';
 export class Form extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { name: 'Name' };
-  }
-
   handleFormSubmit = (event) => {
     event.preventDefault();
     this.props.inputsValidate();
@@ -18,60 +13,100 @@ export class Form extends Component {
         className={this.props.state.formIsValid ? 'hide' : 'form__wrapper'}
         onSubmit={this.handleFormSubmit}>
         <label htmlFor="">
-          <input name="name" type="text" onChange={this.props.getValuesFromForm} />
+          Name
+          <input
+            name="name"
+            type="text"
+            value={this.props.state.name}
+            onChange={this.props.getValuesFromForm}
+          />
           {<p>{this.props.state.nameError}</p>}
         </label>
 
         <label htmlFor="">
-          <input name="lastName" type="text" onChange={this.props.getValuesFromForm} />
+          Last Name
+          <input
+            name="lastName"
+            type="text"
+            value={this.props.state.lastName}
+            onChange={this.props.getValuesFromForm}
+          />
           {<p>{this.props.state.lastNameError}</p>}
         </label>
 
         <label htmlFor="">
-          <input name="dateOfBirth" type="date" onChange={this.props.getValuesFromForm} />
+          Date of birth
+          <input
+            name="dateOfBirth"
+            type="date"
+            value={this.props.state.dateOfBirth}
+            onChange={this.props.getValuesFromForm}
+          />
           {<p>{this.props.state.dateOfBirthError}</p>}
         </label>
 
         <label htmlFor="">
-          <input type="tel" name="phone" maxLength="12" onChange={this.props.getValuesFromForm} />
+          Phone number
+          <input
+            type="tel"
+            name="phone"
+            maxLength="12"
+            value={this.props.state.phone}
+            onChange={this.props.getValuesFromForm}
+          />
           {<p>{this.props.state.phoneError}</p>}
         </label>
 
         <label htmlFor="">
-          <input name="site" type="text" onChange={this.props.getValuesFromForm} />
+          Site
+          <input
+            name="site"
+            type="text"
+            value={this.props.state.site}
+            onChange={this.props.getValuesFromForm}
+          />
           {<p>{this.props.state.siteError}</p>}
         </label>
 
         <label htmlFor="">
+          About
           <textarea
             name="about"
             cols="30"
             rows="2"
+            value={this.props.state.about}
             onChange={this.props.getValuesFromForm}></textarea>
           <div>Cчетчик символов(600max){this.props.state.about.length}</div>
+          {<p>{this.props.state.aboutError}</p>}
         </label>
 
         <label htmlFor="">
+          Stack technology
           <textarea
             name="stackTechnology"
             cols="30"
             rows="2"
+            value={this.props.state.stackTechnology}
             onChange={this.props.getValuesFromForm}></textarea>
           <div>Cчетчик символов(600max){this.props.state.stackTechnology.length}</div>
+          {<p>{this.props.state.stackTechnologyError}</p>}
         </label>
 
         <label htmlFor="">
+          Last Project
           <textarea
             name="lastProject"
             id=""
             cols="30"
             rows="2"
+            value={this.props.state.lastProject}
             onChange={this.props.getValuesFromForm}></textarea>
           <div>Cчетчик символов(600max){this.props.state.lastProject.length}</div>
+          {<p>{this.props.state.lastProjectError}</p>}
         </label>
 
         <button>Save</button>
-        <button>Cancel</button>
+        <button onClick={this.props.clearState}>Cancel</button>
       </form>
     );
   }

@@ -1,6 +1,6 @@
 export const formInitialState = {
-  name: 'name',
-  lastName: 'last name',
+  name: '',
+  lastName: '',
   dateOfBirth: '',
   phone: '',
   site: '',
@@ -18,4 +18,15 @@ export const formInitialState = {
   lastProjectError: '',
 
   formIsValid: '',
+};
+
+export const formErrors = {
+  name: '',
+  lastName: '',
+  dateOfBirth: '',
+  phone: '',
+  site: '',
+  about: '',
+  stackTechnology: '',
+  lastProject: '',
 };
