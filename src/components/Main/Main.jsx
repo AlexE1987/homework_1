@@ -48,21 +48,21 @@ export class Main extends Component {
     } else formErrors.site = '';
 
     if (this.state.about.trim() === '') {
-      this.state.about.trim().length > 600
-        ? (formErrors.about = 'Превышен лимит символов в поле')
-        : (formErrors.about = 'Поле пустое. Заполните пожалуйста');
+      formErrors.about = 'Поле пустое. Заполните пожалуйста';
+    } else if (this.state.about.trim().length > 10) {
+      formErrors.about = 'Превышен лимит символов в поле';
     } else formErrors.about = '';
 
     if (this.state.stackTechnology.trim() === '') {
-      this.state.stackTechnology.trim().length > 600
-        ? (formErrors.stackTechnology = 'Превышен лимит символов в поле')
-        : (formErrors.stackTechnology = 'Поле пустое. Заполните пожалуйста');
+      formErrors.stackTechnology = 'Поле пустое. Заполните пожалуйста';
+    } else if (this.state.stackTechnology.trim().length > 10) {
+      formErrors.stackTechnology = 'Превышен лимит символов в поле';
     } else formErrors.stackTechnology = '';
 
     if (this.state.lastProject.trim() === '') {
-      this.state.lastProject.trim().length > 600
-        ? (formErrors.lastProject = 'Превышен лимит символов в поле')
-        : (formErrors.lastProject = 'Поле пустое. Заполните пожалуйста');
+      formErrors.lastProject = 'Поле пустое. Заполните пожалуйста';
+    } else if (this.state.lastProject.trim().length > 10) {
+      formErrors.lastProject = 'Превышен лимит символов в поле';
     } else formErrors.lastProject = '';
 
     if (
@@ -98,7 +98,6 @@ export class Main extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.clearState}>Clear</button>
         <Form
           getValuesFromForm={this.getValuesFromForm}
           formValid={this.state.formValid}

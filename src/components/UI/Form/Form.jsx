@@ -76,7 +76,7 @@ export class Form extends Component {
             rows="2"
             value={this.props.state.about}
             onChange={this.props.getValuesFromForm}></textarea>
-          <div>Cчетчик символов(600max){this.props.state.about.length}</div>
+          <div>Symbols: 600max {this.props.state.about.length}</div>
           {<p>{this.props.state.aboutError}</p>}
         </label>
 
@@ -88,7 +88,7 @@ export class Form extends Component {
             rows="2"
             value={this.props.state.stackTechnology}
             onChange={this.props.getValuesFromForm}></textarea>
-          <div>Cчетчик символов(600max){this.props.state.stackTechnology.length}</div>
+          <div>Symbols: 600max {this.props.state.stackTechnology.length}</div>
           {<p>{this.props.state.stackTechnologyError}</p>}
         </label>
 
@@ -101,7 +101,7 @@ export class Form extends Component {
             rows="2"
             value={this.props.state.lastProject}
             onChange={this.props.getValuesFromForm}></textarea>
-          <div>Cчетчик символов(600max){this.props.state.lastProject.length}</div>
+          <div>Symbols: 600max {this.props.state.lastProject.length}</div>
           {<p>{this.props.state.lastProjectError}</p>}
         </label>
 
