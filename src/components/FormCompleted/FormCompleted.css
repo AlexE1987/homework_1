@@ -1,0 +1,24 @@
+.form-completed__wrapper {
+  word-wrap: break-word;
+}
+
+.info__wrapper {
+}
+
+.title {
+  margin-top: 10px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0.1px;
+  color: #25282b;
+}
+
+.desc {
+  width: 500px;
+  margin-top: 10px;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.2px;
+  color: #a0a4a8;
+}

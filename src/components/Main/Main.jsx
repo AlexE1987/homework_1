@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import FormCompleted from '../FormCompleted/FormCompleted';
 import Form from '../UI/Form/Form';
 import './Main.css';
-import { formInitialState, formErrors } from '../store/store';
+import { formInitialState, formErrors } from '../../store/store';
 
 export class Main extends Component {
   constructor(props) {
@@ -30,12 +30,10 @@ export class Main extends Component {
     } else formErrors.lastName = '';
 
     if (this.state.dateOfBirth === '') {
-      formErrors.dateOfBirth = 'Поле пустое. Заполните пожалуйста';
+      formErrors.dateOfBirth = 'Выберите дату рождения';
     } else formErrors.dateOfBirth = '';
 
-    // ! create formating a phone number while typing
-
-    if (!/[0-9]/.test(this.state.phone.trim())) {
+    if (!/\d\-\d{4}\-\d{2}\-\d{2}$/.test(this.state.phone.trim())) {
       this.state.phone === ''
         ? (formErrors.phone = 'Поле пустое. Заполните пожалуйста')
         : (formErrors.phone = 'Введите корректный номер телефона в формате: 7-7777-77-77');
@@ -49,20 +47,20 @@ export class Main extends Component {
 
     if (this.state.about.trim() === '') {
       formErrors.about = 'Поле пустое. Заполните пожалуйста';
-    } else if (this.state.about.trim().length > 10) {
-      formErrors.about = 'Превышен лимит символов в поле';
+    } else if (this.state.about.trim().length > 600) {
+      formErrors.about = 'Превышен лимит символов в поле ввода';
     } else formErrors.about = '';
 
     if (this.state.stackTechnology.trim() === '') {
       formErrors.stackTechnology = 'Поле пустое. Заполните пожалуйста';
-    } else if (this.state.stackTechnology.trim().length > 10) {
-      formErrors.stackTechnology = 'Превышен лимит символов в поле';
+    } else if (this.state.stackTechnology.trim().length > 600) {
+      formErrors.stackTechnology = 'Превышен лимит символов в поле ввода';
     } else formErrors.stackTechnology = '';
 
     if (this.state.lastProject.trim() === '') {
       formErrors.lastProject = 'Поле пустое. Заполните пожалуйста';
-    } else if (this.state.lastProject.trim().length > 10) {
-      formErrors.lastProject = 'Превышен лимит символов в поле';
+    } else if (this.state.lastProject.trim().length > 600) {
+      formErrors.lastProject = 'Превышен лимит символов в поле ввода';
     } else formErrors.lastProject = '';
 
     if (
@@ -86,28 +84,28 @@ export class Main extends Component {
         lastProjectError: formErrors.lastProject,
       }));
     } else {
+      this.props.renameHeaderTitle(this.state.name, this.state.lastName);
       this.setState({ formIsValid: true });
     }
   };
 
   clearState = (event) => {
     event.preventDefault();
+    this.props.renameHeaderTitle(this.state.formIsValid, this.state.name, this.state.lastName);
     this.setState(formInitialState);
   };
 
   render() {
     return (
-      <div>
+      <>
         <Form
           getValuesFromForm={this.getValuesFromForm}
-          formValid={this.state.formValid}
-          formValidate={this.formValidate}
           inputsValidate={this.inputsValidate}
           clearState={this.clearState}
           state={this.state}
         />
         <FormCompleted state={this.state} />
-      </div>
+      </>
     );
   }
 }
